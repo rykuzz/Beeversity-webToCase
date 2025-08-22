@@ -258,8 +258,6 @@ class MultiStepForm {
             document.getElementById('phone').value || 'Not provided';
         document.getElementById('review-company').textContent = 
             document.getElementById('company').value || 'Not provided';
-        document.getElementById('review-applicationId').textContent = 
-            document.getElementById('00NNS00002TkZdl').value || 'Not provided';
 
         // Case Details
         document.getElementById('review-recordType').textContent = 
@@ -270,8 +268,6 @@ class MultiStepForm {
             this.getSelectText('reason') || 'Not selected';
         document.getElementById('review-priority').textContent = 
             document.getElementById('priority').value || 'Not selected';
-        document.getElementById('review-status').textContent = 
-            this.getSelectText('status') || 'Not selected';
         document.getElementById('review-subject').textContent = 
             document.getElementById('subject').value || 'Not provided';
         document.getElementById('review-description').textContent = 
@@ -469,11 +465,9 @@ class MultiStepForm {
             email: document.getElementById('email').value,
             phone: document.getElementById('phone').value,
             company: document.getElementById('company').value,
-            applicationId: document.getElementById('00NNS00002TkZdl').value,
             recordType: document.getElementById('recordType').value,
             type: document.getElementById('type').value,
             reason: document.getElementById('reason').value,
-            status: document.getElementById('status').value,
             priority: document.getElementById('priority').value,
             subject: document.getElementById('subject').value,
             description: document.getElementById('description').value,
@@ -497,12 +491,7 @@ class MultiStepForm {
                 
                 Object.keys(formData).forEach(key => {
                     if (key !== 'currentStep') {
-                        let elementId = key;
-                        if (key === 'applicationId') {
-                            elementId = '00NNS00002TkZdl';
-                        }
-                        
-                        const element = document.getElementById(elementId);
+                        const element = document.getElementById(key);
                         if (element && formData[key]) {
                             element.value = formData[key];
                         }
@@ -557,10 +546,6 @@ class MultiStepForm {
             {
                 id: 'recordType',
                 tooltip: 'Choose the department that best handles your type of request'
-            },
-            {
-                id: '00NNS00002TkZdl',
-                tooltip: 'Enter your student ID, application number, or any reference ID you have'
             }
         ];
 
