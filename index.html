@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Support Case Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎓 Student Support Request</h1>
+            <p>Get help with academic, administrative, or technical issues</p>
+        </div>
+
+        <!-- Step Indicator -->
+        <div class="step-indicator">
+            <div class="step active" data-step="1">
+                <div class="step-number">1</div>
+                <div class="step-title">Contact Info</div>
+            </div>
+            <div class="step-connector"></div>
+            <div class="step" data-step="2">
+                <div class="step-number">2</div>
+                <div class="step-title">Case Details</div>
+            </div>
+            <div class="step-connector"></div>
+            <div class="step" data-step="3">
+                <div class="step-number">3</div>
+                <div class="step-title">Review & Submit</div>
+            </div>
+        </div>
+
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+
+        <form action="https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8&orgId=00DNS00000QWoKT" method="POST" id="caseForm">
+            <input type="hidden" name="orgid" value="00DNS00000QWoKT">
+            <input type="hidden" name="retURL" value="http://">
+            <input type="hidden" id="external" name="external" value="1">
+
+            <!-- Step 1: Contact Information -->
+            <div class="form-step active" id="step1">
+                <div class="form-section">
+                    <div class="section-title">
+                        👤 Contact Information
+                    </div>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="name" class="required">
+                                <svg class="icon" viewBox="0 0 20 20">
+                                    <path d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"/>
+                                </svg>
+                                Full Name
+                            </label>
+                            <input type="text" id="name" name="name" maxlength="80" required>
+                            <div class="field-info">Enter your complete name</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email" class="required">
+                                <svg class="icon" viewBox="0 0 20 20">
+                                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+                                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+                                </svg>
+                                Email Address
+                            </label>
+                            <input type="email" id="email" name="email" maxlength="80" required>
+                            <div class="field-info">We'll send updates to this email</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">
+                                <svg class="icon" viewBox="0 0 20 20">
+                                    <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+                                </svg>
+                                Phone Number
+                            </label>
+                            <input type="text" id="phone" name="phone" maxlength="40">
+                            <div class="field-info">Optional contact number</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="company">
+                                <svg class="icon" viewBox="0 0 20 20">
+                                    <path d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z"/>
+                                </svg>
+                                Institution/Company
+                            </label>
+                            <input type="text" id="company" name="company" maxlength="80">
+                            <div class="field-info">Your school or organization</div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="step-navigation">
+                    <button type="button" class="nav-btn next-btn" id="nextStep1">
+                        Next: Case Details 
+                        <svg class="icon" viewBox="0 0 20 20">
+                            <path d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 2: Case Details -->
+            <div class="form-step" id="step2">
+                <div class="form-section">
+                    <div class="section-title">
+                        🎯 Case Details
+                    </div>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="recordType" class="required">Department Category</label>
+                            <select id="recordType" name="recordType" required>
+                                <option value="">Select department...</option>
+                                <option value="012NS0000086hDl">📚 Academic & Student Affairs</option>
+                                <option value="012NS0000086hC9">💰 Finance & Administration</option>
+                                <option value="012NS0000086ez3">💻 IT Support Request</option>
+                                <option value="012NS000006eYp7">📋 General Inquiry</option>
+                            </select>
+                            <div class="field-info">Choose the most relevant department</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="type" class="required">Request Type</label>
+                            <select id="type" name="type" required>
+                                <option value="">Select type...</option>
+                                <option value="Question">❓ Question</option>
+                                <option value="Problem">⚠️ Problem</option>
+                                <option value="Request">📝 Request</option>
+                                <option value="Payment Issue">💳 Payment Issue</option>
+                                <option value="Grade Dispute">📊 Grade Dispute</option>
+                                <option value="Guidance">🧭 Guidance</option>
+                                <option value="Other">📋 Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="reason" class="required">Specific Issue</label>
+                            <select id="reason" name="reason" required>
+                                <option value="">Select issue...</option>
+                                <optgroup label="🔐 Account & Access">
+                                    <option value="Password Reset">Password Reset</option>
+                                    <option value="Student Portal Access">Student Portal Access</option>
+                                    <option value="Student ID Card Replacement">Student ID Card Replacement</option>
+                                </optgroup>
+                                <optgroup label="💻 Technical Support">
+                                    <option value="Network Connectivity">Network Connectivity</option>
+                                    <option value="Hardware Issue">Hardware Issue</option>
+                                    <option value="Software Installation">Software Installation</option>
+                                </optgroup>
+                                <optgroup label="📚 Academic Services">
+                                    <option value="Course Registration">Course Registration</option>
+                                    <option value="Grade Inquiry">Grade Inquiry</option>
+                                    <option value="Academic Advising">Academic Advising</option>
+                                    <option value="Transcript Request">Transcript Request</option>
+                                </optgroup>
+                                <optgroup label="💰 Financial Services">
+                                    <option value="Tuition Fee Inquiry">Tuition Fee Inquiry</option>
+                                    <option value="Scholarship Application">Scholarship Application</option>
+                                </optgroup>
+                                <optgroup label="📋 Other">
+                                    <option value="Other">Other</option>
+                                </optgroup>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="priority" class="required">Priority Level</label>
+                            <select id="priority" name="priority" required style="display: none;">
+                                <option value="">Select priority...</option>
+                                <option value="Critical">Critical</option>
+                                <option value="Urgent">Urgent</option>
+                                <option value="High">High</option>
+                                <option value="Medium">Medium</option>
+                                <option value="Normal">Normal</option>
+                                <option value="Low">Low</option>
+                            </select>
+                            <div class="priority-badges">
+                                <div class="priority-badge critical" data-value="Critical">🚨 Critical</div>
+                                <div class="priority-badge urgent" data-value="Urgent">⚡ Urgent</div>
+                                <div class="priority-badge high" data-value="High">🔴 High</div>
+                                <div class="priority-badge medium" data-value="Medium">🟡 Medium</div>
+                                <div class="priority-badge normal" data-value="Normal">🟢 Normal</div>
+                                <div class="priority-badge low" data-value="Low">⚪ Low</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="subject" class="required">
+                                <svg class="icon" viewBox="0 0 20 20">
+                                    <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"/>
+                                </svg>
+                                Subject
+                            </label>
+                            <input type="text" id="subject" name="subject" maxlength="80" placeholder="Brief summary of your issue..." required>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="description" class="required">
+                                <svg class="icon" viewBox="0 0 20 20">
+                                    <path d="M3 5a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2h-3.22l-2.32 2.32a1 1 0 01-1.42 0L5.72 15H5a2 2 0 01-2-2V5z"/>
+                                </svg>
+                                Detailed Description
+                            </label>
+                            <textarea name="description" id="description" placeholder="Please provide detailed information about your issue, including steps to reproduce, error messages, and any other relevant details..." required></textarea>
+                            <div class="field-info">The more details you provide, the better we can help you</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-navigation">
+                    <button type="button" class="nav-btn back-btn" id="backStep2">
+                        <svg class="icon" viewBox="0 0 20 20">
+                            <path d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"/>
+                        </svg>
+                        Back
+                    </button>
+                    <button type="button" class="nav-btn next-btn" id="nextStep2">
+                        Next: Review
+                        <svg class="icon" viewBox="0 0 20 20">
+                            <path d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 3: Review & Submit -->
+            <div class="form-step" id="step3">
+                <div class="form-section">
+                    <div class="section-title">
+                        📋 Review Your Information
+                    </div>
+                    
+                    <div class="review-section">
+                        <h4>Contact Information</h4>
+                        <div class="review-grid">
+                            <div class="review-item">
+                                <strong>Name:</strong> <span id="review-name"></span>
+                            </div>
+                            <div class="review-item">
+                                <strong>Email:</strong> <span id="review-email"></span>
+                            </div>
+                            <div class="review-item">
+                                <strong>Phone:</strong> <span id="review-phone"></span>
+                            </div>
+                            <div class="review-item">
+                                <strong>Institution:</strong> <span id="review-company"></span>
+                            </div>
+                            <div class="review-item full-width">
+                                <strong>Student/Application ID:</strong> <span id="review-applicationId"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="review-section">
+                        <h4>Case Details</h4>
+                        <div class="review-grid">
+                            <div class="review-item">
+                                <strong>Department:</strong> <span id="review-recordType"></span>
+                            </div>
+                            <div class="review-item">
+                                <strong>Type:</strong> <span id="review-type"></span>
+                            </div>
+                            <div class="review-item">
+                                <strong>Issue:</strong> <span id="review-reason"></span>
+                            </div>
+                            <div class="review-item">
+                                <strong>Priority:</strong> <span id="review-priority"></span>
+                            </div>
+                            <div class="review-item">
+                                <strong>Status:</strong> <span id="review-status"></span>
+                            </div>
+                            <div class="review-item full-width">
+                                <strong>Subject:</strong> <span id="review-subject"></span>
+                            </div>
+                            <div class="review-item full-width">
+                                <strong>Description:</strong> <span id="review-description"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-navigation">
+                    <button type="button" class="nav-btn back-btn" id="backStep3">
+                        <svg class="icon" viewBox="0 0 20 20">
+                            <path d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"/>
+                        </svg>
+                        Back
+                    </button>
+                    <button type="submit" class="nav-btn submit-btn" id="submitBtn">
+                        🚀 Submit Support Request
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
