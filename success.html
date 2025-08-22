@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Submitted Successfully - Student Support</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Additional styles for success page */
+        .success-container {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .success-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            animation: bounce 2s infinite;
+        }
+
+        .success-title {
+            color: var(--dark-purple);
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #28a745, #20c997);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .success-message {
+            background: rgba(40, 167, 69, 0.1);
+            color: #155724;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 30px 0;
+            border: 2px solid rgba(40, 167, 69, 0.3);
+            box-shadow: 0 4px 15px rgba(40, 167, 69, 0.1);
+        }
+
+        .case-info {
+            background: var(--pale-pink);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            text-align: left;
+        }
+
+        .case-info h3 {
+            color: var(--dark-purple);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .info-item {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .info-item strong {
+            color: var(--dark-purple);
+            font-size: 0.9rem;
+        }
+
+        .info-item span {
+            color: var(--medium-purple);
+            font-size: 0.95rem;
+            padding: 8px 12px;
+            background: var(--white);
+            border-radius: 8px;
+            border: 1px solid rgba(109, 70, 107, 0.2);
+        }
+
+        .next-steps {
+            background: rgba(109, 70, 107, 0.1);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            border-left: 4px solid var(--medium-purple);
+        }
+
+        .next-steps h3 {
+            color: var(--dark-purple);
+            margin-bottom: 15px;
+        }
+
+        .next-steps ul {
+            text-align: left;
+            color: var(--medium-purple);
+            line-height: 1.6;
+        }
+
+        .next-steps li {
+            margin-bottom: 8px;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .action-btn {
+            padding: 12px 24px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            min-width: 180px;
+            justify-content: center;
+        }
+
+        .primary-btn {
+            background: linear-gradient(135deg, var(--medium-purple) 0%, var(--light-purple) 100%);
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(109, 70, 107, 0.3);
+        }
+
+        .secondary-btn {
+            background: var(--pale-pink);
+            color: var(--medium-purple);
+            border: 2px solid var(--pale-pink);
+        }
+
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(109, 70, 107, 0.4);
+        }
+
+        .case-reference {
+            background: linear-gradient(135deg, var(--light-purple) 0%, var(--medium-purple) 100%);
+            color: var(--white);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 25px 0;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .reference-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-top: 10px;
+            letter-spacing: 1px;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .success-title {
+                font-size: 2rem;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .action-btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="success-container">
+            <!-- Success Icon -->
+            <div class="success-icon">✅</div>
+            
+            <!-- Success Title -->
+            <h1 class="success-title">Case Submitted Successfully!</h1>
+            
+            <!-- Success Message -->
+            <div class="success-message">
+                <h3>🎉 Thank you for submitting your support request!</h3>
+                <p>Your case has been successfully created and assigned to our support team. We have received all your information and will begin processing your request immediately.</p>
+            </div>
+
+            <!-- Case Reference -->
+            <div class="case-reference">
+                <div>Your Case Reference Number:</div>
+                <div class="reference-number" id="caseReference">
+                    #SUP-<span id="referenceNumber">000001</span>
+                </div>
+                <small>Please save this reference number for future communication</small>
+            </div>
+
+            <!-- Case Information -->
+            <div class="case-info">
+                <h3>
+                    📋 Case Summary
+                </h3>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <strong>Submitted On:</strong>
+                        <span id="submissionDate">-</span>
+                    </div>
+                    <div class="info-item">
+                        <strong>Priority Level:</strong>
+                        <span id="casePriority">-</span>
+                    </div>
+                    <div class="info-item">
+                        <strong>Department:</strong>
+                        <span id="caseDepartment">-</span>
+                    </div>
+                    <div class="info-item">
+                        <strong>Case Type:</strong>
+                        <span id="caseType">-</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Next Steps -->
+            <div class="next-steps">
+                <h3>📝 What Happens Next?</h3>
+                <ul>
+                    <li><strong>Email Confirmation:</strong> You will receive a confirmation email within 5 minutes at your registered email address.</li>
+                    <li><strong>Initial Response:</strong> Our support team will review your case and provide an initial response within 24 hours.</li>
+                    <li><strong>Case Updates:</strong> You will receive email notifications for any updates or when additional information is needed.</li>
+                    <li><strong>Resolution:</strong> We will work diligently to resolve your issue as quickly as possible based on the priority level.</li>
+                </ul>
+            </div>
+
+            <!-- Response Time Information -->
+            <div class="case-info">
+                <h3>
+                    ⏰ Expected Response Times
+                </h3>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <strong>🚨 Critical:</strong>
+                        <span>Within 2 hours</span>
+                    </div>
+                    <div class="info-item">
+                        <strong>⚡ Urgent:</strong>
+                        <span>Within 4 hours</span>
+                    </div>
+                    <div class="info-item">
+                        <strong>🔴 High:</strong>
+                        <span>Within 8 hours</span>
+                    </div>
+                    <div class="info-item">
+                        <strong>🟡 Medium:</strong>
+                        <span>Within 24 hours</span>
+                    </div>
+                    <div class="info-item">
+                        <strong>🟢 Normal:</strong>
+                        <span>Within 48 hours</span>
+                    </div>
+                    <div class="info-item">
+                        <strong>⚪ Low:</strong>
+                        <span>Within 72 hours</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+                <a href="index.html" class="action-btn secondary-btn">
+                    📝 Submit Another Case
+                </a>
+                <a href="#" class="action-btn primary-btn" onclick="printPage()">
+                    🖨️ Print This Page
+                </a>
+            </div>
+
+            <!-- Contact Information -->
+            <div class="next-steps">
+                <h3>📞 Need Immediate Help?</h3>
+                <p><strong>Emergency Support:</strong> If this is an urgent matter that cannot wait, please contact our emergency support line at <strong>(021) 1234-5678</strong> and reference your case number.</p>
+                <p><strong>Email Support:</strong> You can also reply directly to the confirmation email you will receive.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Generate case reference number
+        function generateCaseReference() {
+            const timestamp = Date.now();
+            const random = Math.floor(Math.random() * 9999) + 1;
+            return String(random).padStart(6, '0');
+        }
+
+        // Format current date
+        function formatDate() {
+            const now = new Date();
+            return now.toLocaleString('id-ID', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+        }
+
+        // Load case information from URL parameters or localStorage
+        function loadCaseInfo() {
+            const urlParams = new URLSearchParams(window.location.search);
+            
+            // Set submission date
+            document.getElementById('submissionDate').textContent = formatDate();
+            
+            // Set case reference number
+            document.getElementById('referenceNumber').textContent = generateCaseReference();
+            
+            // Try to get case info from URL parameters
+            const priority = urlParams.get('priority') || 'Medium';
+            const department = urlParams.get('department') || 'General Inquiry';
+            const type = urlParams.get('type') || 'Question';
+            
+            document.getElementById('casePriority').textContent = priority;
+            document.getElementById('caseDepartment').textContent = department;
+            document.getElementById('caseType').textContent = type;
+        }
+
+        // Print page function
+        function printPage() {
+            window.print();
+        }
+
+        // Auto-redirect after 5 minutes (optional)
+        function setupAutoRedirect() {
+            setTimeout(() => {
+                if (confirm('Would you like to return to the main page?')) {
+                    window.location.href = 'index.html';
+                }
+            }, 300000); // 5 minutes
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            loadCaseInfo();
+            // setupAutoRedirect(); // Uncomment if you want auto-redirect
+            
+            console.log('✅ Success page loaded successfully!');
+        });
+    </script>
+</body>
+</html>
